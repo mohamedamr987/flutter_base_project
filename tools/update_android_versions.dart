@@ -55,13 +55,34 @@ Future<void> updateGradleWrapper() async {
   final file = File('android/gradle/wrapper/gradle-wrapper.properties');
   if (!file.existsSync()) return;
   final content = await file.readAsString();
+  final latestGradle = await fetchLatestStableGradleVersion();
+  if (latestGradle == null) {
+    print('❌ Failed to fetch latest Gradle version.');
+    return;
+  }
+
   final updated = content.replaceAllMapped(
     RegExp(r'distributionUrl=.*'),
     (_) =>
-        'distributionUrl=https\\://services.gradle.org/distributions/gradle-8.6-bin.zip',
+        'distributionUrl=https\\://services.gradle.org/distributions/gradle-$latestGradle-all.zip',
   );
+
   await file.writeAsString(updated);
   print('🛠 Updated gradle-wrapper.properties');
+}
+
+Future<String?> fetchLatestStableGradleVersion() async {
+  try {
+    final response = await http
+        .get(Uri.parse('https://services.gradle.org/versions/current'));
+    if (response.statusCode != 200) return null;
+
+    final json = response.body;
+    final match = RegExp(r'"version"\s*:\s*"([^"]+)"').firstMatch(json);
+    return match?.group(1);
+  } catch (_) {
+    return null;
+  }
 }
 
 Future<void> updateBuildGradle(String agpVersion, String kotlinVersion) async {

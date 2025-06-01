@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "887877205278",
+    "project_id": "souq-eljomla",
+    "storage_bucket": "souq-eljomla.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887877205278:android:e578a14b1b249871629d0f",
+        "android_client_info": {
+          "package_name": "com.base_project.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWKs7v0NlmCKTOkbtz9tWZxlBU7Ph2z3E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -14,8 +14,6 @@ import 'core/caching_utils/caching_utils.dart';
 import 'core/network_utils/network_utils.dart';
 import 'my_app.dart';
 import 'package:get_it/get_it.dart';
-import "package:base_project/firebase_options_dates.dart" as dates;
-import "package:base_project/firebase_options_eljomla.dart" as eljomla;
 
 enum Flavor { eljomla, dates }
 
@@ -40,12 +38,6 @@ void main() async {
     await NetworkUtils.init(),
     await EasyLocalization.ensureInitialized(),
     await CachingUtils.init(),
-    await Firebase.initializeApp(
-      name: currentFlavor == Flavor.eljomla ? 'souq-eljomla' : 'souq-dates',
-      options: currentFlavor == Flavor.eljomla
-          ? eljomla.DefaultFirebaseOptions.currentPlatform
-          : dates.DefaultFirebaseOptions.currentPlatform,
-    ),
     await FirebaseNotificationHelper.getNotifications(),
   ]);
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
