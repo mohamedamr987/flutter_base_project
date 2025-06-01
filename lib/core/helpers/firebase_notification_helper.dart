@@ -1,3 +1,4 @@
+import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -103,7 +104,7 @@ class FirebaseNotificationHelper {
       ),
       action: notificationModel.isClickable
           ? SnackBarAction(
-              label: 'view'.tr(),
+              label: LocalizationKeys.view.tr(),
               onPressed: () {
                 notificationModel.onTap();
               },

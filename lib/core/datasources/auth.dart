@@ -68,8 +68,7 @@ class AuthDataSource {
         await CachingUtils.cacheUser(response.data['data']);
         sendFcm();
       } else {
-        showSnackBar(handleErrorMessages(response.data['message']),
-            errorMessage: true);
+        showSnackBar(response.data['message'], errorMessage: true);
       }
       return success;
     } catch (e, s) {
@@ -104,7 +103,7 @@ class AuthDataSource {
       } else {
         if (showError)
           showSnackBar(
-            handleErrorMessages(response.data['message']),
+            response.data['message'],
             errorMessage: true,
           );
       }
@@ -182,8 +181,7 @@ class AuthDataSource {
 
       final success = !(response.data['isError'] ?? false);
       if (!success) {
-        showSnackBar(handleErrorMessages(response.data['message']),
-            errorMessage: true);
+        showSnackBar(response.data['message'], errorMessage: true);
       }
     } catch (e, s) {
       handleGenericException(e, s);

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:base_project/l10n/localization_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -31,7 +32,7 @@ class NoConnectionPage extends StatelessWidget {
                 children: [
                   const NoConnectionComponent(),
                   AppButton(
-                    title: "tryAgain".tr(),
+                    title: LocalizationKeys.tryAgain.tr(),
                     onTap: () => RouteUtils.navigateAndPopAll(
                       const SplashView(),
                     ),

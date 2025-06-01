@@ -228,13 +228,3 @@ void handleGenericException(dynamic e, StackTrace s) {
     logError(e, s);
   }
 }
-
-String handleErrorMessages(String message) {
-  if (message.contains("duplicateValue")) {
-    return "duplicateValues".tr() + " " + message.split(":")[1];
-  }
-  if (message.contains("productFinished")) {
-    return "productFinished".tr() + " " + message.split(":")[1];
-  }
-  return message.tr();
-}

@@ -1,3 +1,4 @@
+import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:base_project/core/helpers/app_colors.dart';
@@ -54,7 +55,7 @@ class OtherStoreEmptyCartAlertWidget extends StatelessWidget {
                 AppButton(
                   padding: EdgeInsets.zero,
                   width: MediaQuery.of(context).size.width * 0.3,
-                  title: "ok".tr(),
+                  title: LocalizationKeys.ok.tr(),
                   onTap: () {
                     Navigator.pop(context, true);
                   },
@@ -63,7 +64,7 @@ class OtherStoreEmptyCartAlertWidget extends StatelessWidget {
                 AppButton.outline(
                   padding: EdgeInsets.zero,
                   width: MediaQuery.of(context).size.width * 0.3,
-                  title: "cancel".tr(),
+                  title: LocalizationKeys.cancel.tr(),
                   onTap: () {
                     Navigator.pop(context, false);
                   },

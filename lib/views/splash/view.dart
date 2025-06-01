@@ -1,4 +1,5 @@
 import 'package:app_links/app_links.dart';
+import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -51,7 +52,8 @@ class _SplashViewState extends State<SplashView> {
           "CachingUtils.user?.subscription ${CachingUtils.user?.subscription}, appFlavor: $appFlavor");
       if (CachingUtils.user == null) {
         RouteUtils.navigateAndPopAll(const HomeLayoutView());
-        showSnackBar("yourLoginCredentialsExpired".tr(), errorMessage: true);
+        showSnackBar(LocalizationKeys.yourLoginCredentialsExpired.tr(),
+            errorMessage: true);
       } else if (!CachingUtils.user!.active) {
         RouteUtils.navigateAndPopAll(const NotActiveView());
       } else {
@@ -102,7 +104,7 @@ class _SplashViewState extends State<SplashView> {
                   children: [
                     const NoConnectionComponent(),
                     AppButton(
-                      title: "tryAgain".tr(),
+                      title: LocalizationKeys.tryAgain.tr(),
                       onTap: () {
                         setState(() {
                           isThereConnection = true;

@@ -1,3 +1,4 @@
+import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:base_project/core/helpers/app_colors.dart';
@@ -39,7 +40,7 @@ showMediaOptionsBottomSheet({
 
                   CameraOption(
                     color: color,
-                    text: "photo".tr(),
+                    text: LocalizationKeys.photo.tr(),
                     icon: Icons.photo,
                     imageSource: imageSource,
                     count: count,
@@ -47,7 +48,7 @@ showMediaOptionsBottomSheet({
                   ),
                   CameraOption(
                     color: color,
-                    text: "video".tr(),
+                    text: LocalizationKeys.video.tr(),
                     imageSource: imageSource,
                     icon: Icons.videocam,
                     count: count,
@@ -63,7 +64,7 @@ showMediaOptionsBottomSheet({
                   Navigator.pop(context);
                 },
                 child: AppText(
-                  title: "cancel".tr(),
+                  title: LocalizationKeys.cancel.tr(),
                   color: color,
                 ),
               ),

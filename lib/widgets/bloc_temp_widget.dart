@@ -1,3 +1,4 @@
+import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -53,7 +54,7 @@ class BlocTempWidget extends StatelessWidget {
                 // ),
                 // const SizedBox(height: 20),
                 AppText(
-                  title: emptyTitle ?? "no_data_is_available".tr(),
+                  title: emptyTitle ?? LocalizationKeys.noDataAvailable.tr(),
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
                   textAlign: TextAlign.center,
@@ -72,7 +73,7 @@ class BlocTempWidget extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: AppText(
-              title: "something_went_wrong".tr(),
+              title: LocalizationKeys.somethingWentWrong.tr(),
               fontSize: 20,
               fontWeight: FontWeight.w600,
               textAlign: TextAlign.center,

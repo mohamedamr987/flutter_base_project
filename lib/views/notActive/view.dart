@@ -1,3 +1,4 @@
+import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:base_project/core/caching_utils/caching_utils.dart';
@@ -34,7 +35,7 @@ class NotActiveView extends StatelessWidget {
                   //  CachingUtils.user?.status == "pending"
                   //     ? "your_account_under_review".tr()
                   //     :
-                  "user_not_active".tr(),
+                  LocalizationKeys.userNotActive.tr(),
               fontSize: 20,
               textAlign: TextAlign.center,
               color: Colors.black,
@@ -50,7 +51,7 @@ class NotActiveView extends StatelessWidget {
             ],
             const SizedBox(height: 20),
             AppButton(
-              title: "refresh".tr(),
+              title: LocalizationKeys.refresh.tr(),
               onTap: () async {
                 RouteUtils.navigateAndPopAll(const SplashView());
               },

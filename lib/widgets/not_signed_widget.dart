@@ -1,3 +1,4 @@
+import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:base_project/main.dart';
@@ -21,7 +22,7 @@ class NotSignedWidget extends StatelessWidget {
             height: 50,
           ),
           Text(
-            "you_are_not_signed_in".tr(),
+            LocalizationKeys.yourNotSignedToAccount.tr(),
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -31,7 +32,7 @@ class NotSignedWidget extends StatelessWidget {
             height: 50,
           ),
           Text(
-            "do_you_want_to_sign_in".tr(),
+            LocalizationKeys.signInToContinue.tr(),
             style: TextStyle(
               fontSize: 16,
             ),
@@ -40,7 +41,7 @@ class NotSignedWidget extends StatelessWidget {
             height: 50,
           ),
           AppButton(
-            title: "sign_in".tr(),
+            title: LocalizationKeys.signIn.tr(),
             onTap: () {},
           ),
         ],

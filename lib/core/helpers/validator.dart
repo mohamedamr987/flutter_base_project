@@ -1,3 +1,4 @@
+import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:base_project/core/caching_utils/caching_utils.dart';
 import 'package:base_project/core/helpers/utils.dart';
@@ -5,16 +6,8 @@ import 'package:base_project/core/helpers/utils.dart';
 class Validator {
   static String? empty(String? value, {String? theField}) {
     if (value == null || value.trim().isEmpty) {
-      return "empty_field".tr() + (theField != null ? " $theField" : "");
-    }
-    return null;
-  }
-
-  static String? carNumber(String? value) {
-    if (value == null || value.trim().isEmpty) {
-      return tr("empty_field");
-    } else if (value.length < 3) {
-      return "car_number_length_validation".tr();
+      return LocalizationKeys.emptyField.tr() +
+          (theField != null ? " $theField" : "");
     }
     return null;
   }

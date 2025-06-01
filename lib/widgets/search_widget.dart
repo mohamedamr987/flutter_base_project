@@ -1,3 +1,4 @@
+import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:base_project/core/helpers/utils.dart';
@@ -48,7 +49,7 @@ class _SearchWidgetState extends State<SearchWidget> {
             borderRadius: BorderRadius.circular(38),
             borderSide: const BorderSide(color: Colors.black12),
           ),
-          hintText: "search".tr(),
+          hintText: LocalizationKeys.search.tr(),
           hintStyle: const TextStyle(
             color: Color(0xFFB0B6B5),
             fontSize: 12,

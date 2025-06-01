@@ -1,3 +1,4 @@
+import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -15,7 +16,7 @@ class NoConnectionComponent extends StatelessWidget {
           'assets/json/no_network.json',
         ),
         AppText(
-          title: "noInternetConnectionPleaseTryAgain".tr(),
+          title: LocalizationKeys.noInternetConnectionPleaseTryAgain.tr(),
           fontSize: 16,
           fontWeight: FontWeight.w600,
           textAlign: TextAlign.center,

@@ -1,3 +1,4 @@
+import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:base_project/core/route_utils/route_utils.dart';
@@ -85,7 +86,7 @@ class AppDialogWidget extends StatelessWidget {
             height: 44,
             padding: EdgeInsets.zero,
             width: MediaQuery.of(context).size.width * 0.25,
-            title: "no".tr(),
+            title: LocalizationKeys.no.tr(),
             onTap: () => navigatorKey.currentState!.pop(false),
             borderColor: const Color(0xFFDA4963),
             titleColor: const Color(0xFFDA4963),
