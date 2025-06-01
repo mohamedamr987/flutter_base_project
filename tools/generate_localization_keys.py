@@ -4,9 +4,10 @@ import json
 from deep_translator import GoogleTranslator
 
 DART_DIR = "lib"
+ASSETS_DIR = "assets/lang"
 KEYS_FILE = os.path.join(DART_DIR, "l10n", "localization_keys.dart")
-EN_JSON = os.path.join(DART_DIR, "l10n", "en.json")
-AR_JSON = os.path.join(DART_DIR, "l10n", "ar.json")
+EN_JSON = os.path.join(ASSETS_DIR, "en.json")
+AR_JSON = os.path.join(ASSETS_DIR, "ar.json")
 
 def find_all_keys():
     pattern = re.compile(r'LocalizationKeys\.(\w+)\s*\.tr\(\)', re.MULTILINE)

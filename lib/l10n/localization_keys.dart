@@ -18,6 +18,7 @@ class LocalizationKeys {
   static const String userNotActive = 'userNotActive';
   static const String video = 'video';
   static const String view = 'view';
-  static const String yourLoginCredentialsExpired = 'yourLoginCredentialsExpired';
+  static const String yourLoginCredentialsExpired =
+      'yourLoginCredentialsExpired';
   static const String yourNotSignedToAccount = 'yourNotSignedToAccount';
 }
