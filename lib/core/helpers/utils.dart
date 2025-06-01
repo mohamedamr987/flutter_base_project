@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:base_project/core/caching_utils/caching_utils.dart';
-import 'package:base_project/core/helpers/app_colors.dart';
+import 'package:base_project/core/theme/app_colors.dart';
 import 'package:base_project/core/helpers/dimensions.dart';
 import 'package:base_project/core/models/user.dart' as user;
 import 'package:geolocator/geolocator.dart';

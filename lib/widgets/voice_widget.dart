@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:base_project/core/helpers/app_colors.dart';
+import 'package:base_project/core/theme/app_colors.dart';
 import 'package:base_project/core/helpers/sound_helper.dart';
 import 'package:base_project/widgets/app_text.dart';
 

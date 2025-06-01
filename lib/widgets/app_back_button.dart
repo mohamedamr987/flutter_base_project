@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:base_project/core/helpers/app_colors.dart';
+import 'package:base_project/core/theme/app_colors.dart';
 import 'package:base_project/core/helpers/dimensions.dart';
 import 'package:base_project/core/route_utils/route_utils.dart';
 

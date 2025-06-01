@@ -1,10 +1,10 @@
+import 'package:base_project/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:base_project/core/helpers/dimensions.dart';
 import 'package:base_project/widgets/app_text.dart';
 
-import '../core/helpers/app_colors.dart';
 import '../core/helpers/utils.dart';
 
 class ArabicToEnglishNumbersFormatter extends TextInputFormatter {

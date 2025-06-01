@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:base_project/core/helpers/app_colors.dart';
+import 'package:base_project/core/theme/app_colors.dart';
 import 'package:base_project/core/helpers/dimensions.dart';
 import 'package:base_project/core/helpers/utils.dart';
 import 'package:base_project/widgets/app_text.dart';
@@ -95,7 +95,6 @@ class AppButton extends StatelessWidget {
                           end: Alignment.bottomCenter,
                           colors: [
                             AppColors.secondary,
-                            AppColors.third,
                           ],
                         )
                       : null,

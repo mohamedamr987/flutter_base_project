@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:base_project/core/helpers/app_colors.dart';
+import 'package:base_project/core/theme/app_colors.dart';
 import 'package:base_project/core/route_utils/route_utils.dart';
 import 'package:base_project/views/noConnectionPage/no_connection_component.dart';
 import 'package:base_project/views/splash/view.dart';

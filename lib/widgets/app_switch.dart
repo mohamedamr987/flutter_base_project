@@ -1,7 +1,6 @@
+import 'package:base_project/core/theme/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:base_project/core/helpers/dimensions.dart';
-
-import '../../core/helpers/app_colors.dart';
 
 class AppSwitch extends StatelessWidget {
   const AppSwitch({

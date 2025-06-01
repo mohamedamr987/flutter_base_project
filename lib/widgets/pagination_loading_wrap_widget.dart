@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:base_project/core/helpers/pagination_handler.dart';
 
-import '../core/helpers/app_colors.dart';
+import 'package:base_project/core/theme/app_colors.dart';
 
 class PaginationLoadingWrapWidget extends StatelessWidget {
   final Widget child;

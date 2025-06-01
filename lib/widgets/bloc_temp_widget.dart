@@ -2,7 +2,7 @@ import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:base_project/core/helpers/app_colors.dart';
+import 'package:base_project/core/theme/app_colors.dart';
 import 'package:base_project/core/models/response.dart';
 import 'package:base_project/widgets/app_text.dart';
 

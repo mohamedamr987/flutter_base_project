@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:base_project/widgets/app_text.dart';
 
-import '../core/helpers/app_colors.dart';
+import 'package:base_project/core/theme/app_colors.dart';
 
 class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   AppAppBar({

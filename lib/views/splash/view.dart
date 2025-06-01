@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:base_project/core/caching_utils/caching_utils.dart';
 import 'package:base_project/core/datasources/auth.dart';
-import 'package:base_project/core/helpers/app_colors.dart';
+import 'package:base_project/core/theme/app_colors.dart';
 import 'package:base_project/main.dart';
 import 'package:base_project/views/homeLayout/view.dart';
 import 'package:base_project/views/noConnectionPage/no_connection_component.dart';

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:base_project/core/caching_utils/caching_utils.dart';
-import 'package:base_project/core/helpers/app_colors.dart';
+import 'package:base_project/core/theme/app_colors.dart';
 import 'package:base_project/core/helpers/firebase_notification_helper.dart';
 import 'package:base_project/core/helpers/utils.dart';
 import 'package:base_project/core/models/notification_model.dart';

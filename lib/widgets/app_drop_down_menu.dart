@@ -1,7 +1,7 @@
+import 'package:base_project/core/theme/app_colors.dart' show AppColors;
 import 'package:flutter/material.dart';
 import 'package:base_project/core/helpers/dimensions.dart';
 
-import '../../../../../../core/helpers/app_colors.dart';
 import '../core/helpers/utils.dart';
 import 'app_text.dart';
 
