@@ -1,0 +1,140 @@
+plugins {
+    id "com.android.application"
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    // END: FlutterFire Configuration
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id 'kotlin-parcelize'
+
+}
+
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+   def keystoreProperties = new Properties()
+   def keystorePropertiesFile = rootProject.file('key.properties')
+   if (keystorePropertiesFile.exists()) {
+       keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+   }
+
+android {
+    namespace "com.base_project.app.base_project"
+    compileSdk flutter.compileSdkVersion
+    ndkVersion flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        applicationId "com.souq.eljomla"
+        minSdkVersion 24
+        targetSdkVersion 34
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+    
+    signingConfigs {
+        eljomla {
+            def eljomlaProperties = new Properties()
+            def eljomlaPropertiesFile = rootProject.file('eljomla-key.properties')
+            if (eljomlaPropertiesFile.exists()) {
+                eljomlaProperties.load(new FileInputStream(eljomlaPropertiesFile))
+            }
+            keyAlias eljomlaProperties['keyAlias']
+            keyPassword eljomlaProperties['keyPassword']
+            storeFile eljomlaProperties['storeFile'] ? file(eljomlaProperties['storeFile']) : null
+            storePassword eljomlaProperties['storePassword']
+        }
+        dates {
+            def datesProperties = new Properties()
+            def datesPropertiesFile = rootProject.file('dates-key.properties')
+            if (datesPropertiesFile.exists()) {
+                datesProperties.load(new FileInputStream(datesPropertiesFile))
+            }
+            keyAlias datesProperties['keyAlias']
+            keyPassword datesProperties['keyPassword']
+            storeFile datesProperties['storeFile'] ? file(datesProperties['storeFile']) : null
+            storePassword datesProperties['storePassword']
+        }
+    }
+
+ flavorDimensions "default"
+    productFlavors {
+        eljomla {
+            signingConfig signingConfigs.eljomla
+            applicationId "com.souq.eljomla"
+            versionNameSuffix "-eljomla"
+            resValue "string", "app_name", "جملة وجودة"
+            manifestPlaceholders = [hostName: "souqeljomla.online"]
+        }
+        dates {
+            signingConfig signingConfigs.dates
+            applicationId "com.souq.dates"
+            versionNameSuffix "-dates"
+            resValue "string", "app_name", "سعودي ون"
+            manifestPlaceholders = [hostName: "souqdates.shop"]
+        }
+    }
+
+    buildTypes {
+        release {
+            // Disable default signing config
+            signingConfig null
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+
+    applicationVariants.all { variant ->
+        def flavor = variant.flavorName
+        
+        if (flavor == "eljomla" || flavor == "dates") {
+            def googleServicesFile = file("src/${flavor}/google-services.json")
+            if (googleServicesFile.exists()) {
+                copy {
+                    from googleServicesFile
+                    into "."
+                }
+            }
+        }
+     
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:32.8.1')
+    implementation "org.jetbrains.kotlin:kotlin-parcelize-runtime:1.9.0"
+    implementation 'com.google.firebase:firebase-analytics'
+}
