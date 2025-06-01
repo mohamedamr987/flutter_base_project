@@ -16,7 +16,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.107+107
+version: 1.0.1+1
 
 environment:
   sdk: ">=3.3.0 <4.0.0"
@@ -28,90 +28,50 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  dio: ^5.8.0+1
+  image_picker: ^1.1.2
+  loading_animation_widget: ^1.3.0
+  cached_network_image: ^3.4.1
+  font_awesome_flutter: ^10.8.0
+  app_links: ^6.4.0
+  connectivity_plus: ^6.1.4
+  internet_connection_checker: ^3.0.1
+  lottie: ^3.3.1
+  flutter_bloc: ^9.1.1
+  google_fonts: ^6.2.1
+  get_it: ^8.0.3
+  firebase_core: ^3.13.1
+  freezed_annotation: ^3.0.0
+  geolocator: ^14.0.1
+  location: ^8.0.0
+  google_maps_flutter: ^2.12.2
+  firebase_crashlytics: ^4.3.6
+  record: ^6.0.0
+  permission_handler: ^12.0.0+1
+  path_provider: ^2.1.5
+  just_audio: ^0.10.3
+  socket_io_client: ^3.1.2
+  dartz: ^0.10.1
+  flutter_screenutil: ^5.9.3
+  flutter_cache_manager: ^3.4.1
+  easy_localization: ^3.0.7+1
+  shared_preferences: ^2.5.3
+  firebase_messaging: ^15.2.6
+
   flutter:
     sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-  font_awesome_flutter: ^10.8.0
-  # Local DB
-  shared_preferences: ^2.5.2
-  # State Management
-  flutter_bloc: ^9.1.0
-  # Overlays
-  # Launching Intents
-  url_launcher: ^6.3.1
-  # Device paths
-  path_provider: ^2.1.5
-  # Picking files
-  image_picker: ^1.1.2
-  file_picker: ^10.1.2
-  # SVG Widget
-  flutter_svg: ^2.0.17
-  # Localization
-  easy_localization: ^3.0.7+1
-  # Responsive
-  flutter_screenutil: ^5.9.3
-  # HTTP Client
-  dio: ^5.8.0+1
-  # Caching images
-  cached_network_image: ^3.4.1
-  # Firebase
-  firebase_core: ^3.12.1
-  firebase_messaging: ^15.2.4
-  freezed_annotation: ^3.0.0
-  json_annotation: ^4.9.0
-  loading_animation_widget: ^1.3.0
-  location: ^8.0.0
-  dartz: ^0.10.1
-  dots_indicator: ^4.0.1
-  geolocator: ^13.0.3
-  socket_io_client: ^3.0.2
-  permission_handler: ^12.0.0+1
-  just_audio: ^0.9.46
-  loading_indicator: ^3.1.1
-  flutter_rating_bar: ^4.0.1
-  get_it: ^8.0.3
-  flutter_paytabs_bridge: ^2.7.0
-  pay_ios: ^1.1.0
-  firebase_crashlytics: ^4.3.4
-  firebase_analytics: ^11.4.4
-  google_fonts: ^6.2.1
-  go_router: ^14.8.1
-  get: ^4.7.2
-  app_links: ^6.4.0
-  pin_code_fields: ^8.0.1
-  dotted_border: ^2.1.21
-  fluttertoast: ^8.2.12
-  lottie: ^3.3.0
-  video_player: ^2.9.3
-  flutter_cache_manager: ^3.4.1
-  google_maps_flutter: ^2.11.0
-  share_plus: ^10.1.4
-  timeago: ^3.7.0
-  excel: ^4.0.6
-  pdf: ^3.11.3
-  record: ^6.0.0
-
-  syncfusion_flutter_xlsio: ^29.1.33
-  image: ^4.3.0
-
-  flick_video_player:
-    git:
-      url: https://github.com/mohamedamr987/flick-video-player/
-
-  internet_connection_checker: ^3.0.1
-  connectivity_plus: ^6.0.4
-  tutorial_coach_mark: ^1.2.12
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.14.3
-  build_runner: ^2.4.8
-  freezed: ^3.0.4
-  json_serializable: ^6.7.1
+  build_runner: ^2.4.15
+  freezed: ^3.0.6
+  json_serializable: ^6.9.5
 
 flutter_launcher_icons:
   android: "launcher_icon"
@@ -149,10 +109,10 @@ flutter:
     - assets/fonts/
     - assets/json/
 
-  fonts:
-    - family: din
-      fonts:
-        - asset: assets/fonts/DINNextLTArabic-Regular-3.ttf
+  # fonts:
+  #   - family: din
+  #     fonts:
+  #       - asset: assets/fonts/DINNextLTArabic-Regular-3.ttf
 
   # assets:
   #   - images/a_dot_burr.jpeg
