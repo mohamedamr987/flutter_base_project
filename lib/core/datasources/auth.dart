@@ -26,8 +26,7 @@ class AuthDataSource {
       print(response.data);
       final success = !(response.data['isError'] ?? false);
       if (success) {
-        await CachingUtils.cacheToken(response.data['token']);
-        await CachingUtils.cacheUser(response.data['data']);
+        await CachingUtils.cacheAuthData(response.data);
         sendFcm();
       } else {
         showSnackBar((response.data["message"] as String).tr(),
@@ -64,8 +63,7 @@ class AuthDataSource {
       print(response.data);
       final success = !(response.data['isError'] ?? false);
       if (success) {
-        await CachingUtils.cacheToken(response.data['token']);
-        await CachingUtils.cacheUser(response.data['data']);
+        await CachingUtils.cacheAuthData(response.data);
         sendFcm();
       } else {
         showSnackBar(response.data['message'], errorMessage: true);
@@ -87,7 +85,7 @@ class AuthDataSource {
   }) async {
     try {
       final response = await NetworkUtils.patch(
-        'users/${CachingUtils.user!.id}',
+        'users/${CachingUtils.user.model?.id}',
         data: {
           if (phone != null) "phoneNumber": phone,
           if (password != null) 'password': password,
@@ -99,7 +97,7 @@ class AuthDataSource {
       print(response.data);
       final success = !(response.data['isError'] ?? false);
       if (success) {
-        await CachingUtils.cacheUser(response.data['data']);
+        await CachingUtils.user.cache(response.data['data']);
       } else {
         if (showError)
           showSnackBar(
@@ -117,13 +115,13 @@ class AuthDataSource {
   static Future<void> getMyProfile() async {
     try {
       final response = await NetworkUtils.get(
-        'users/getUser/${CachingUtils.user!.id}',
+        'users/getUser/${CachingUtils.user.model?.id}',
       );
       final success = !(response.data['isError'] ?? false);
       print(response.data);
       if (success) {
-        await CachingUtils.cacheUser(response.data['data']);
-        print("user: ${CachingUtils.user!.active}");
+        await CachingUtils.user.cache(response.data['data']);
+        print("user: ${CachingUtils.user.model!..active}");
       } else {
         if (response.data['message'] == "userNotFoundPleaseAuthenticate") {
           await CachingUtils.clearCache();
@@ -158,7 +156,7 @@ class AuthDataSource {
   static Future<bool> deleteUser() async {
     try {
       final response = await NetworkUtils.delete(
-        'users/${CachingUtils.user!.id}',
+        'users/${CachingUtils.user.model!..id}',
       );
       await CachingUtils.clearCache();
       return true;

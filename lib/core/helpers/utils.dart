@@ -151,8 +151,10 @@ class Utils {
   }
 
   static String getChannelName(user.User user) {
-    String storeName = user.role == "store" ? user.id : CachingUtils.user!.id;
-    String customerName = user.role == "user" ? user.id : CachingUtils.user!.id;
+    String storeName =
+        user.role == "store" ? user.id : CachingUtils.user.model!.id;
+    String customerName =
+        user.role == "user" ? user.id : CachingUtils.user.model!.id;
     return storeName + customerName;
   }
 

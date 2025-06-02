@@ -1,11 +1,14 @@
-import 'dart:convert';
+import 'package:base_project/core/caching_utils/caching_model.dart';
 import 'package:base_project/core/models/user.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CachingUtils {
-  static const String _cachingUserKey = 'logged_user';
-  static const String _cachingTokenKey = 'token';
+  static CachingModel<User> user =
+      CachingModel<User>(cachingKey: 'logged_user', fromJson: User.fromJson);
+  static CachingModel<String> token = CachingModel<String>(
+    cachingKey: 'token',
+  );
 
   static late SharedPreferences sharedPreferences;
 
@@ -13,23 +16,9 @@ class CachingUtils {
     sharedPreferences = await SharedPreferences.getInstance();
   }
 
-  static User? get user {
-    if (sharedPreferences.containsKey(_cachingUserKey)) {
-      return User.fromJson(
-        jsonDecode(
-          sharedPreferences.getString(_cachingUserKey)!,
-        ),
-      );
-    }
-    return null;
-  }
-
-  static Future<void> cacheUser(Map<String, dynamic> value) async {
-    await sharedPreferences.setString(_cachingUserKey, jsonEncode(value));
-  }
-
-  static Future<void> cacheToken(String value) async {
-    await sharedPreferences.setString(_cachingTokenKey, value);
+  static Future<void> cacheAuthData(Map<String, dynamic> data) async {
+    await token.cache(data['token'] ?? '');
+    await user.cache(data['user'] ?? '');
   }
 
   static Future<void> clearCache() async {
@@ -38,11 +27,6 @@ class CachingUtils {
     } catch (e) {
       print(e);
     }
-    await sharedPreferences.remove(_cachingUserKey);
-    await sharedPreferences.remove(_cachingTokenKey);
-  }
-
-  static String? get token {
-    return sharedPreferences.getString(_cachingTokenKey);
+    await sharedPreferences.clear();
   }
 }

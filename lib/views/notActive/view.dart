@@ -40,10 +40,10 @@ class NotActiveView extends StatelessWidget {
               textAlign: TextAlign.center,
               color: Colors.black,
             ),
-            if (CachingUtils.user?.deactivateReason != null) ...[
+            if (CachingUtils.user.model?.deactivateReason != null) ...[
               const SizedBox(height: 20),
               AppText(
-                title: CachingUtils.user!.deactivateReason!,
+                title: CachingUtils.user.model!.deactivateReason!,
                 fontSize: 16,
                 textAlign: TextAlign.center,
                 color: Colors.black,

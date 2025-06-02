@@ -49,12 +49,12 @@ class _SplashViewState extends State<SplashView> {
     if (CachingUtils.user != null) {
       await AuthDataSource.getMyProfile();
       print(
-          "CachingUtils.user?.subscription ${CachingUtils.user?.subscription}, appFlavor: $appFlavor");
+          "CachingUtils.user?.subscription ${CachingUtils.user.model?.subscription}, appFlavor: $appFlavor");
       if (CachingUtils.user == null) {
         RouteUtils.navigateAndPopAll(const HomeLayoutView());
         showSnackBar(LocalizationKeys.yourLoginCredentialsExpired.tr(),
             errorMessage: true);
-      } else if (!CachingUtils.user!.active) {
+      } else if (!CachingUtils.user.model!.active) {
         RouteUtils.navigateAndPopAll(const NotActiveView());
       } else {
         RouteUtils.navigateAndPopAll(const HomeLayoutView());

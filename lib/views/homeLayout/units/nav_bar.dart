@@ -29,7 +29,7 @@ class _NavBar extends StatelessWidget {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: CachingUtils.user?.role == "seller"
+              children: CachingUtils.user.model?.role == "seller"
                   ? [
                       _BuildItem(
                         icon: "store",
