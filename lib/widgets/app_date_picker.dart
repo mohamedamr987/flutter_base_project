@@ -1,7 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:base_project/core/route_utils/route_utils.dart';
+import 'package:base_project/core/routing/app_router.dart';
+
 import 'package:base_project/widgets/app_button.dart';
 import 'package:base_project/widgets/app_text.dart';
 
@@ -12,7 +13,7 @@ class AppDatePicker extends StatefulWidget {
 
   static Future<DateTime?> show({required String title}) {
     return showModalBottomSheet(
-      context: RouteUtils.context,
+      context: navigatorKey.currentContext!,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(24),
       ),

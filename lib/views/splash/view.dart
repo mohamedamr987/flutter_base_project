@@ -1,27 +1,19 @@
-import 'package:app_links/app_links.dart';
 import 'package:base_project/core/assets/app_png_assets.dart';
 import 'package:base_project/core/extensions/assets.dart';
+import 'package:base_project/core/extensions/context_routing.dart';
+import 'package:base_project/core/routing/app_router.dart';
 import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:base_project/core/caching_utils/caching_utils.dart';
-import 'package:base_project/core/datasources/auth.dart';
-import 'package:base_project/core/theme/app_colors.dart';
-import 'package:base_project/main.dart';
-import 'package:base_project/views/homeLayout/view.dart';
 import 'package:base_project/views/noConnectionPage/no_connection_component.dart';
 import 'package:base_project/views/noConnectionPage/no_connection_scaffold.dart';
-import 'package:base_project/views/notActive/view.dart';
+import 'package:base_project/views/onboarding/view.dart';
 import 'package:base_project/widgets/app_button.dart';
-import 'package:base_project/widgets/app_loading_indicator.dart';
-import 'package:base_project/widgets/snack_bar.dart';
-
-import '../../../core/helpers/utils.dart';
-import '../../../core/route_utils/route_utils.dart';
 
 class SplashView extends StatefulWidget {
+  static const String routeName = 'splash';
+  static const String routePath = '/splash';
   final String? storeId;
   const SplashView({super.key, this.storeId});
 
@@ -35,19 +27,17 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     checkForStoreUpdate();
-    // AppLinks is singleton
-// Subscribe to all events (initial link and further)
-
     super.initState();
   }
 
   void checkForStoreUpdate() async {
-    // navigatorKey.currentContext?.setLocale(Locale("ar"));
-    // await checkIfThereIsConnection();
-    // if (!isThereConnection) return;
-    // // await CachingUtils.clearCache();
-    // internetChecker();
-    // await Future.wait([]);
+    navigatorKey.currentContext?.setLocale(Locale("ar"));
+    await checkIfThereIsConnection();
+    if (!isThereConnection) return;
+    // await CachingUtils.clearCache();
+    internetChecker();
+    await Future.wait([]);
+    context.navigateAndPopAll(OnboardingView.routeName);
     // if (CachingUtils.user != null) {
     //   await AuthDataSource.getMyProfile();
     //   print(
@@ -78,22 +68,27 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.black,
       body: isThereConnection
-          ? Container(
-              padding: EdgeInsets.symmetric(horizontal: 42.w, vertical: 195.h),
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
+          ? Stack(
+              children: [
+                AppPngAssets.splashBg.toFullScreenImage(),
+                Container(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 42.w, vertical: 195.h),
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      AppPngAssets.logo.toImage(),
+                      Column(
+                        children: [
+                          AppPngAssets.logo.toImage(),
+                        ],
+                      ),
                     ],
                   ),
-                ],
-              ),
+                ),
+              ],
             )
           : Container(
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),

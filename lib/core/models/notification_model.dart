@@ -1,4 +1,3 @@
-import 'package:base_project/core/route_utils/route_utils.dart';
 import 'package:base_project/views/homeLayout/view.dart';
 
 enum NotificationType {
@@ -34,11 +33,9 @@ class NotificationModel {
   void onTap() async {
     if ((type == NotificationType.chat) && notificationObjectId != null) {
     } else if (type == NotificationType.sellerVideo) {
-      RouteUtils.navigateAndPopAll(HomeLayoutView(
-        index: 1,
-      ));
+      HomeLayoutView.navigateAndPopAll(index: 1);
     } else {
-      RouteUtils.navigateAndPopAll(HomeLayoutView());
+      HomeLayoutView.navigateAndPopAll();
     }
   }
 

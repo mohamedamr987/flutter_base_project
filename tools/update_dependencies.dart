@@ -36,6 +36,8 @@ void main(List<String> args) async {
 
   // Step 1: Update all declared packages to latest
   for (final pkg in allDeclaredPackages.keys) {
+    if (_isFlutterPackage(pkg)) continue;
+
     final latest = await _fetchLatestPubVersion(pkg);
     if (latest != null) {
       final index = allDeclaredPackages[pkg]!;
@@ -55,6 +57,7 @@ void main(List<String> args) async {
   );
 
   for (final pkg in usedPackages) {
+    if (_isFlutterPackage(pkg)) continue;
     final latest = await _fetchLatestPubVersion(pkg);
     if (latest != null) {
       final depIndex =
@@ -73,7 +76,7 @@ void main(List<String> args) async {
     exclude: {projectName},
   );
 
-  final unused = allDeclaredPackages.keys.where((pkg) {
+  final unused = sectionIndexes['dependencies']!.keys.where((pkg) {
     final isUsed = actuallyUsed.contains(pkg);
     final isFlutter = _isFlutterPackage(pkg);
     if (!isUsed && !isFlutter) {
@@ -89,36 +92,14 @@ void main(List<String> args) async {
       print('  • $pkg');
     }
 
-    // Auto-remove unused from `dependencies:` only (not dev_dependencies)
     for (final pkg in unused) {
-      final depIndex = sectionIndexes['dependencies']![pkg];
-      if (depIndex != null) {
-        updatedLines.removeAt(depIndex);
+      final index = sectionIndexes['dependencies']![pkg];
+      if (index != null) {
+        updatedLines.removeAt(index);
         print('❌ Removed unused dependency: $pkg');
       }
     }
   }
-  // final buffer = StringBuffer();
-  // final now = DateTime.now().toIso8601String();
-  // buffer.writeln('📦 Dependency Update Changelog – $now');
-  // buffer.writeln();
-
-  // for (final entry in updated.entries) {
-  //   final name = entry.key;
-  //   final newVersion = entry.value;
-  //   final oldVersion = originalVersions[name];
-  //   if (oldVersion == null) {
-  //     buffer.writeln('➕ $name: ^$newVersion (new)');
-  //   } else if (oldVersion != newVersion) {
-  //     buffer.writeln('🔼 $name: ^$oldVersion → ^$newVersion');
-  //   }
-  // }
-
-  // final changelogFile = File('tools/changelog.txt');
-  // await changelogFile.create(recursive: true);
-  // await changelogFile.writeAsString(buffer.toString());
-
-  // print('\n📝 Changelog saved to tools/changelog.txt');
 
   // Step 4: Output changelog
   if (updated.isNotEmpty) {
@@ -210,7 +191,7 @@ Map<String, int> _sectionIndexes(List<String> lines, String section) {
     final match = RegExp(r'^\s{2}([a-zA-Z0-9_]+):').firstMatch(lines[i]);
     if (match != null) {
       result[match.group(1)!] = i;
-    } else if (!lines[i].startsWith(' ')) {
+    } else if (lines[i].trim().isEmpty || !lines[i].startsWith(' ')) {
       break;
     }
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:base_project/core/extensions/context_routing.dart';
+import 'package:base_project/core/routing/app_router.dart';
 import 'package:base_project/core/theme/app_colors.dart';
-import 'package:base_project/core/route_utils/route_utils.dart';
 
 class AppLoadingIndicator extends StatelessWidget {
   const AppLoadingIndicator({super.key});
@@ -10,11 +11,11 @@ class AppLoadingIndicator extends StatelessWidget {
 
   static Future<void> show() async {
     if (_isVisible) {
-      RouteUtils.pop();
+      navigatorKey.currentContext!.goBack();
     }
     _isVisible = true;
     await showDialog(
-      context: RouteUtils.context,
+      context: navigatorKey.currentContext!,
       barrierDismissible: false,
       barrierColor: Colors.black.withOpacity(0.7),
       builder: (context) {
@@ -28,7 +29,7 @@ class AppLoadingIndicator extends StatelessWidget {
     if (!_isVisible) {
       return;
     }
-    RouteUtils.pop();
+    navigatorKey.currentContext!.goBack();
     _isVisible = false;
   }
 

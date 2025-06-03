@@ -14,4 +14,11 @@ extension AssetsExtension on String {
         color: color,
         fit: fit,
       );
+
+  Image toFullScreenImage() => Image.asset(
+        this,
+        fit: BoxFit.cover,
+        width: double.infinity,
+        height: double.infinity,
+      );
 }

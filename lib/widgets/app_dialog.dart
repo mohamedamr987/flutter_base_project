@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:base_project/core/routing/app_router.dart';
 import 'package:base_project/core/theme/app_colors.dart';
 import 'package:base_project/core/helpers/dimensions.dart';
-import 'package:base_project/core/route_utils/route_utils.dart';
+
 import 'package:base_project/widgets/app_text.dart';
 
 import '../core/helpers/utils.dart';
@@ -27,7 +28,7 @@ class AppDialog extends StatelessWidget {
       bool dismissible = true,
       required Color headerColor}) {
     return showDialog(
-      context: RouteUtils.context,
+      context: navigatorKey.currentContext!,
       barrierDismissible: true,
       barrierColor: headerColor,
       builder: (context) {

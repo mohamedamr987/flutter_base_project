@@ -6,6 +6,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:base_project/core/routing/app_router.dart';
 import 'package:location/location.dart';
 import 'package:base_project/core/caching_utils/caching_utils.dart';
 import 'package:base_project/core/theme/app_colors.dart';
@@ -15,7 +16,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:base_project/widgets/app_loading_indicator.dart';
 
 import '../../widgets/snack_bar.dart';
-import '../route_utils/route_utils.dart';
 
 class Utils {
   static const String dummyProductImage =
@@ -51,7 +51,7 @@ class Utils {
   }
 
   static double get bottomDevicePadding {
-    final bottom = MediaQuery.of(RouteUtils.context).padding.bottom;
+    final bottom = MediaQuery.of(navigatorKey.currentContext!).padding.bottom;
     if (bottom < 34) {
       return 34.height;
     }
@@ -59,7 +59,7 @@ class Utils {
   }
 
   static double get topDevicePadding {
-    final top = MediaQuery.of(RouteUtils.context).padding.top;
+    final top = MediaQuery.of(navigatorKey.currentContext!).padding.top;
     if (top < 44) {
       return 44.height;
     }
@@ -71,7 +71,8 @@ class Utils {
   }
 
   static double get keyboardHeight {
-    final keyboardHeight = MediaQuery.of(RouteUtils.context).viewInsets.bottom;
+    final keyboardHeight =
+        MediaQuery.of(navigatorKey.currentContext!).viewInsets.bottom;
     if (keyboardHeight == 0) {
       return keyboardHeight;
     }
@@ -79,7 +80,7 @@ class Utils {
   }
 
   static bool get isAR {
-    return RouteUtils.context.locale.languageCode == 'ar';
+    return navigatorKey.currentContext!.locale.languageCode == 'ar';
   }
 
   static void dismissKeyboard() {
@@ -118,7 +119,7 @@ class Utils {
   }
 
   static ThemeData get datePickerTheme {
-    return Theme.of(RouteUtils.context).copyWith(
+    return Theme.of(navigatorKey.currentContext!).copyWith(
       colorScheme: const ColorScheme.light(
         primary: AppColors.primary,
         onPrimary: AppColors.secondary,

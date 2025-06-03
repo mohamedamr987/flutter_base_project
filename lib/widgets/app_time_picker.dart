@@ -1,7 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:base_project/core/route_utils/route_utils.dart';
+import 'package:base_project/core/routing/app_router.dart';
+
 import 'package:base_project/widgets/app_button.dart';
 
 import '../core/helpers/utils.dart';
@@ -11,7 +12,7 @@ class AppTimePicker extends StatefulWidget {
 
   static Future<TimeOfDay?> show() async {
     final result = await showModalBottomSheet(
-      context: RouteUtils.context,
+      context: navigatorKey.currentContext!,
       backgroundColor: Colors.transparent,
       builder: (context) {
         return AppTimePicker();

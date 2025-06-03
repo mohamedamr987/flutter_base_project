@@ -1,7 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:base_project/core/route_utils/route_utils.dart';
+import 'package:base_project/core/routing/app_router.dart';
+
 import 'package:base_project/widgets/app_button.dart';
 import 'package:base_project/widgets/app_text.dart';
 
@@ -12,7 +13,7 @@ class AppTimeRangePicker extends StatefulWidget {
 
   static Future<Map<String, TimeOfDay>?> show() async {
     final result = await showModalBottomSheet(
-      context: RouteUtils.context,
+      context: navigatorKey.currentContext!,
       backgroundColor: Colors.transparent,
       builder: (context) {
         return AppTimeRangePicker();

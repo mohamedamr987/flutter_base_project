@@ -1,17 +1,19 @@
 import 'package:base_project/core/assets/app_png_assets.dart';
 import 'package:base_project/core/extensions/assets.dart';
+import 'package:base_project/core/extensions/context_routing.dart';
 import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:base_project/core/caching_utils/caching_utils.dart';
 import 'package:base_project/core/helpers/utils.dart';
-import 'package:base_project/core/route_utils/route_utils.dart';
 import 'package:base_project/main.dart';
 import 'package:base_project/views/splash/view.dart';
 import 'package:base_project/widgets/app_button.dart';
 import 'package:base_project/widgets/app_text.dart';
 
 class NotActiveView extends StatelessWidget {
+  static const String routeName = 'notActive';
+  static const String routePath = '/not-active';
   const NotActiveView({super.key});
 
   @override
@@ -53,7 +55,7 @@ class NotActiveView extends StatelessWidget {
             AppButton(
               title: LocalizationKeys.refresh.tr(),
               onTap: () async {
-                RouteUtils.navigateAndPopAll(const SplashView());
+                context.navigateAndPopAll(SplashView.routeName);
               },
             ),
           ],

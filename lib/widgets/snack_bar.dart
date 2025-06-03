@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:base_project/core/routing/app_router.dart';
 import 'package:base_project/core/theme/app_colors.dart';
 
-import '../core/route_utils/route_utils.dart';
 import 'app_text.dart';
 
 void showSnackBar(
@@ -15,8 +15,9 @@ void showSnackBar(
   if (message.trim().isEmpty) {
     return;
   }
-  ScaffoldMessenger.of(context ?? RouteUtils.context).hideCurrentSnackBar();
-  ScaffoldMessenger.of(context ?? RouteUtils.context).showSnackBar(
+  ScaffoldMessenger.of(context ?? navigatorKey.currentContext!)
+      .hideCurrentSnackBar();
+  ScaffoldMessenger.of(context ?? navigatorKey.currentContext!).showSnackBar(
     SnackBar(
       backgroundColor: errorMessage ? AppColors.red : color,
       behavior: SnackBarBehavior.floating,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:base_project/core/extensions/context_routing.dart';
 import 'package:base_project/core/theme/app_colors.dart';
 import 'package:base_project/core/helpers/dimensions.dart';
-import 'package:base_project/core/route_utils/route_utils.dart';
 
 import '../core/helpers/utils.dart';
 
@@ -27,7 +27,7 @@ class AppBackButton extends StatelessWidget {
         child: RotatedBox(
           quarterTurns: Utils.isAR ? 0 : 2,
           child: IconButton(
-            onPressed: onTap ?? () => RouteUtils.pop(),
+            onPressed: onTap ?? () => context.goBack(),
             icon: Icon(
               Utils.isAR
                   ? FontAwesomeIcons.chevronRight

@@ -1,10 +1,10 @@
+import 'package:base_project/core/routing/app_router.dart';
 import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:base_project/core/theme/app_colors.dart';
 import 'package:base_project/core/models/notification_model.dart';
-import 'package:base_project/core/route_utils/route_utils.dart';
 
 class FirebaseNotificationHelper {
   static FirebaseMessaging messaging = FirebaseMessaging.instance;
