@@ -1,4 +1,6 @@
 import 'package:app_links/app_links.dart';
+import 'package:base_project/core/assets/app_png_assets.dart';
+import 'package:base_project/core/extensions/assets.dart';
 import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -40,32 +42,32 @@ class _SplashViewState extends State<SplashView> {
   }
 
   void checkForStoreUpdate() async {
-    navigatorKey.currentContext?.setLocale(Locale("ar"));
-    await checkIfThereIsConnection();
-    if (!isThereConnection) return;
-    // await CachingUtils.clearCache();
-    internetChecker();
-    await Future.wait([]);
-    if (CachingUtils.user != null) {
-      await AuthDataSource.getMyProfile();
-      print(
-          "CachingUtils.user?.subscription ${CachingUtils.user.model?.subscription}, appFlavor: $appFlavor");
-      if (CachingUtils.user == null) {
-        RouteUtils.navigateAndPopAll(const HomeLayoutView());
-        showSnackBar(LocalizationKeys.yourLoginCredentialsExpired.tr(),
-            errorMessage: true);
-      } else if (!CachingUtils.user.model!.active) {
-        RouteUtils.navigateAndPopAll(const NotActiveView());
-      } else {
-        RouteUtils.navigateAndPopAll(const HomeLayoutView());
-      }
-    } else
-      RouteUtils.navigateAndPopAll(const HomeLayoutView());
-    final _appLinks = AppLinks();
-    _appLinks.uriLinkStream.listen((uri) {
-      print("uriii" + uri.pathSegments.toString());
-      if (uri.pathSegments.contains("product")) {}
-    });
+    // navigatorKey.currentContext?.setLocale(Locale("ar"));
+    // await checkIfThereIsConnection();
+    // if (!isThereConnection) return;
+    // // await CachingUtils.clearCache();
+    // internetChecker();
+    // await Future.wait([]);
+    // if (CachingUtils.user != null) {
+    //   await AuthDataSource.getMyProfile();
+    //   print(
+    //       "CachingUtils.user?.subscription ${CachingUtils.user.model?.subscription}, appFlavor: $appFlavor");
+    //   if (CachingUtils.user == null) {
+    //     RouteUtils.navigateAndPopAll(const HomeLayoutView());
+    //     showSnackBar(LocalizationKeys.yourLoginCredentialsExpired.tr(),
+    //         errorMessage: true);
+    //   } else if (!CachingUtils.user.model!.active) {
+    //     RouteUtils.navigateAndPopAll(const NotActiveView());
+    //   } else {
+    //     RouteUtils.navigateAndPopAll(const HomeLayoutView());
+    //   }
+    // } else
+    //   RouteUtils.navigateAndPopAll(const HomeLayoutView());
+    // final _appLinks = AppLinks();
+    // _appLinks.uriLinkStream.listen((uri) {
+    //   print("uriii" + uri.pathSegments.toString());
+    //   if (uri.pathSegments.contains("product")) {}
+    // });
   }
 
   Future<void> checkIfThereIsConnection() async {
@@ -76,7 +78,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.black,
       body: isThereConnection
           ? Container(
               padding: EdgeInsets.symmetric(horizontal: 42.w, vertical: 195.h),
@@ -87,10 +89,7 @@ class _SplashViewState extends State<SplashView> {
                 children: [
                   Column(
                     children: [
-                      Image.asset(
-                        Utils.getAssetPNGPath(
-                            'logo_without_background_${currentFlavor.name}${currentFlavor == Flavor.dates ? '_black' : ''}'),
-                      ),
+                      AppPngAssets.logo.toImage(),
                     ],
                   ),
                 ],

@@ -1,3 +1,5 @@
+import 'package:base_project/core/assets/app_png_assets.dart';
+import 'package:base_project/core/extensions/assets.dart';
 import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +25,7 @@ class NotActiveView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 20),
-            Image.asset(
-              Utils.getAssetPNGPath(
-                  'logo_without_background_${currentFlavor.name}${currentFlavor == Flavor.dates ? '_black' : ''}'),
+            AppPngAssets.logo.toImage(
               width: 100,
               height: 100,
             ),

@@ -16,12 +16,6 @@ if (localPropertiesFile.exists()) {
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode') ?: '1'
 def flutterVersionName = localProperties.getProperty('flutter.versionName') ?: '1.0'
 
-// Optional: pull app names for each flavor
-def appNames = [
-    dev    : localProperties.getProperty('app.name.dev') ?: "App Test",
-    staging : localProperties.getProperty('app.name.staging') ?: "App Staging",
-    prod    : localProperties.getProperty('app.name.prod') ?: "App"
-]
 
 android {
     namespace "com.base_project.app"
@@ -48,44 +42,47 @@ android {
         versionName flutterVersionName
     }
 
-    signingConfigs {
-        dev {
-            def props = loadSigningProps("dev-key.properties")
-            applySigning(props, delegate)
-        }
-        staging {
-            def props = loadSigningProps("staging-key.properties")
-            applySigning(props, delegate)
-        }
-        prod {
-            def props = loadSigningProps("prod-key.properties")
-            applySigning(props, delegate)
-        }
-    }
+    // signingConfigs {
+    //     dev {
+    //         def props = loadSigningProps("dev-key.properties")
+    //         applySigning(props, delegate)
+    //     }
+    //     staging {
+    //         def props = loadSigningProps("staging-key.properties")
+    //         applySigning(props, delegate)
+    //     }
+    //     prod {
+    //         def props = loadSigningProps("prod-key.properties")
+    //         applySigning(props, delegate)
+    //     }
+    // }
 
     flavorDimensions "env"
     productFlavors {
         dev {
             dimension "env"
             applicationId "com.base_project.dev"
+            namespace "com.base_project.dev"
             versionNameSuffix "-dev"
-            signingConfig signingConfigs.dev
-            resValue "string", "app_name", appNames.dev
+            signingConfig signingConfigs.debug
+            resValue "string", "app_name", "Kaptain Dev"
             manifestPlaceholders = [hostName: "dev.example.com"]
         }
         staging {
             dimension "env"
             applicationId "com.base_project.staging"
+            namespace "com.base_project.staging"
             versionNameSuffix "-staging"
-            signingConfig signingConfigs.staging
-            resValue "string", "app_name", appNames.staging
+            signingConfig signingConfigs.debug
+            resValue "string", "app_name", "Kaptain Staging"
             manifestPlaceholders = [hostName: "dev.example.com"]
         }
         prod {
             dimension "env"
-            applicationId "com.base_project"
-            signingConfig signingConfigs.prod
-            resValue "string", "app_name", appNames.prod
+            applicationId "com.base_project.app"
+            namespace "com.base_project.app"
+            signingConfig signingConfigs.debug
+            resValue "string", "app_name", "Kaptain"
             manifestPlaceholders = [hostName: "dev.example.com"]
         }
     }
@@ -135,8 +132,4 @@ def applySigning(Properties props, def config) {
     config.keyPassword = props['keyPassword']
     config.storeFile = props['storeFile'] ? file(props['storeFile']) : null
     config.storePassword = props['storePassword']
-}
-
-tasks.withType(JavaCompile) {
-    options.compilerArgs << "-Xlint:deprecation"
 }

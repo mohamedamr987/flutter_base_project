@@ -2,50 +2,25 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "eljomla (debug)",
+      "name": "dev",
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart",
-      "args": ["--flavor", "eljomla", "--target", "lib/main.dart"]
+      "args": ["--flavor", "dev", "--target", "lib/main.dart"]
     },
     {
-      "name": "dates (debug)",
+      "name": "staging",
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart",
-      "args": ["--flavor", "dates", "--target", "lib/main.dart"]
+      "args": ["--flavor", "staging", "--target", "lib/main.dart"]
     },
     {
-      "name": "eljomla (profile)",
+      "name": "prod",
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart",
-      "args": ["--flavor", "eljomla", "--target", "lib/main.dart"],
-      "flutterMode": "profile"
-    },
-    {
-      "name": "dates (profile)",
-      "request": "launch",
-      "type": "dart",
-      "program": "lib/main.dart",
-      "args": ["--flavor", "dates", "--target", "lib/main.dart"],
-      "flutterMode": "profile"
-    },
-    {
-      "name": "eljomla (release)",
-      "request": "launch",
-      "type": "dart",
-      "program": "lib/main.dart",
-      "args": ["--flavor", "eljomla", "--target", "lib/main.dart"],
-      "flutterMode": "release"
-    },
-    {
-      "name": "dates (release)",
-      "request": "launch",
-      "type": "dart",
-      "program": "lib/main.dart",
-      "args": ["--flavor", "dates", "--target", "lib/main.dart"],
-      "flutterMode": "release"
+      "args": ["--flavor", "prod", "--target", "lib/main.dart"]
     }
   ]
 }

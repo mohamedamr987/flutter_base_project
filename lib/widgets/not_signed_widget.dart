@@ -1,3 +1,5 @@
+import 'package:base_project/core/assets/app_png_assets.dart';
+import 'package:base_project/core/extensions/assets.dart';
 import 'package:base_project/l10n/localization_keys.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +15,7 @@ class NotSignedWidget extends StatelessWidget {
       padding: EdgeInsets.all(20),
       child: Column(
         children: [
-          Image.asset(
-            "assets/images/png/logo_without_background_${currentFlavor.name}${currentFlavor == Flavor.dates ? '_black' : ''}.png",
+          AppPngAssets.logo.toImage(
             width: 121,
             height: 121,
           ),

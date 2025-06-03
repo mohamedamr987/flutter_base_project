@@ -23,26 +23,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(430, 932),
-      minTextAdapt: true,
-      splitScreenMode: false,
-      child: const SplashView(),
-      builder: (_, child) => KeyboardPopScaffold(
-        child: ScrollConfiguration(
-          behavior: MyBehavior(),
-          child: BlocBuilder<ThemeCubit, ThemeState>(
-            builder: (context, state) {
-              return MaterialApp(
-                debugShowCheckedModeBanner: false,
-                theme: buildAppTheme(),
-                navigatorKey: navigatorKey,
-                home: child,
-                localizationsDelegates: context.localizationDelegates,
-                supportedLocales: const [Locale('ar'), Locale('en')],
-                locale: context.locale,
-              );
-            },
+    return BlocProvider(
+      create: (context) => ThemeCubit(),
+      child: ScreenUtilInit(
+        designSize: const Size(430, 932),
+        minTextAdapt: true,
+        splitScreenMode: false,
+        child: const SplashView(),
+        builder: (_, child) => KeyboardPopScaffold(
+          child: ScrollConfiguration(
+            behavior: MyBehavior(),
+            child: BlocBuilder<ThemeCubit, ThemeState>(
+              builder: (context, state) {
+                return MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  theme: buildAppTheme(),
+                  navigatorKey: navigatorKey,
+                  home: child,
+                  localizationsDelegates: context.localizationDelegates,
+                  supportedLocales: const [Locale('ar'), Locale('en')],
+                  locale: context.locale,
+                );
+              },
+            ),
           ),
         ),
       ),
